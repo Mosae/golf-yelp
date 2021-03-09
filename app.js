@@ -4,19 +4,34 @@ const path = require('path');
 const mongoose = require('mongoose');
 const Golfcourse = require('./models/golfcourses');
 
-mongoose
-	.connect('mongodb://localhost:27017/golf', {
-		useNewUrlParser: true,
-		useCreateIndex: true,
-		useUnifiedTopology: true,
-	})
-	.then(() => {
-		return Server.start();
-	})
-	.catch((err) => {
-		console.log('Error starting');
-		process.exit(1);
-	});
+// mongoose
+// 	.connect('mongodb://localhost:27017/golf', {
+// 		useNewUrlParser: true,
+// 		useCreateIndex: true,
+// 		useUnifiedTopology: true,
+// 	})
+// 	.then(() => {
+// 		return Server.start();
+// 	})
+// 	.catch((err) => {
+// 		console.log('Error starting');
+// 		process.exit(1);
+// 	});
+
+// const db = mongoose.connection;
+
+// db.once('open', () => {
+// 	console.info('MongoDB event open');
+// 	console.debug('MongoDB connected [%s]', url);
+// 	console.log('Database connected');
+// 	db.on('error', console.error.bind(console, 'connection error:'));
+// });
+
+mongoose.connect('mongodb://localhost:27017/golf', {
+	useNewUrlParser: true,
+	useCreateIndex: true,
+	useUnifiedTopology: true,
+});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
